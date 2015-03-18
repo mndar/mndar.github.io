@@ -1,0 +1,6 @@
+<b>Host config /etc/exports</b><br/>
+<pre>/disks/storage/openmoko/myroot/ 192.168.0.202(rw,sync,no_subtree_check,no_root_squash)</pre>
+<b>Freerunner U-Boot config</b>
+<pre>setenv bootargs_nfs root=/dev/nfs nfsroot=192.168.0.200:/disks/storage/openmoko/myroot ip=192.168.0.202:192.168.0.200:192.168.0.200:255.255.255.0:ezx:usb0:off rootdelay=5 console=ttySAC0,115200 console=tty0 loglevel=8
+
+setenv menu_5 Boot from NFS: setenv bootargs \${bootargs_nfs} \${mtdparts} \; nand read.e 0x32000000 kernel\; bootm 0x32000000</pre>

@@ -1,0 +1,11 @@
+# Write your default config options here! 
+ao = alsa:device=softvol
+#ao = alsa
+vo = x11
+softvol = 1
+zoom = 1
+subfont-text-scale=1.5
+subfont-osd-scale=1.5
+subfont-outline=0
+#vf=pp
+#pp=6

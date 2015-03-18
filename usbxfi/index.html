@@ -1,0 +1,67 @@
+</html>
+<head><title>Creative USB X-Fi Surround 5.1</title></head>
+<body>
+<h2>Creative USB X-Fi Surround 5.1</h2><font color="#AAAAAA"><i>Updated 20th Feb 2011</i></font>
+<hr/>
+<b>lsusb -v output</b><br/>
+<a href="files/creative.log">creative.log</a><br/>
+<br/>
+<hr>
+<b>Notes</b><br/>
+The card works fine with the snd-usb-audio module. I've only tested the stereo output though. <br/>
+The X-Fi USB doesn't have a hardware mixer. So you have to use the softvol plugin along with dmix.<br/>
+The asoundrc file, mplayer config file and amarok config info can be found here <a href="http://mndar.phpnet.us/usbxfi/files" target="_blank_">http://mndar.phpnet.us/usbxfi/files</a>.<br/> One important thing to note about softvol is that the Master control won't appear until the device is used for playback.<br/>
+<br/>
+<hr><br/><i>All this has been to be added to the ALSA Wiki. <a href="http://alsa.opensrc.org/Usb-audio#Creative_USB_X-Fi_Surround_5.1" target="_blank_">http://alsa.opensrc.org/Usb-audio#Creative_USB_X-Fi_Surround_5.1</a></i><hr>
+The device has a volume knob, the behavior of which is identical to that of IR remotes bundled with some Creative USB Audio devices. It also has a LED which can be set to On or can be set to Blink continuously. There doesn't seem to be a way to switch it off.<br/><br/> The latest stable kernel release (2.6.37) has support for this. <br/>alsa-driver-1.0.24 too has these changes but I haven't tested it yet.<br/><strike>Support for this is now in the <a href="http://git.kernel.org/?p=linux/kernel/git/tiwai/sound-2.6.git;a=summary" target="_blank_">git</a> repo. Ref: <a href="http://mailman.alsa-project.org/pipermail/alsa-devel/2010-October/033100.html" target="_blank_">[1]<a> <a href="http://mailman.alsa-project.org/pipermail/alsa-devel/2010-November/033300.html" target="_blank_">[2]</a> 
+Here is the <a href="files/usbxfi_volume_knob_led_alsa_driver_1.0.23.patch" target="_blank_">patch</a> for alsa-driver-1.0.23<br/><br/></strike>
+Once the snd-usb-audio module is loaded, you'll see the 'Power LED' control in alsamixer. Muting it will set the LED to Blink and unmuting it will set it to On.
+The patch allows lirc to receive events from the volume knob. You need to use the alsa_usb driver with lirc. <br/><br/>
+There is a remote bundled with this device sometimes. Its possible the remote will work with the same patch but unfortunately I don't have one with me.<br/><br/>
+
+
+The default alsa_usb config can be used as the codes are 0x0d for Mute, 0x0f for Vol- and 0x10 for Vol+. These are identical to the remote identified by name RM-1500 (Not Creative_RM-1500)
+<pre>
+cp /usr/share/lirc/remotes/creative/lircd.conf.alsa_usb /etc/lircd.conf
+</pre>
+Lirc needs to be started with these options. You can set your distro's config file accordingly
+<pre>
+lircd --driver=alsa_usb --device=hw:S51
+</pre>
+Run <b>irw</b> and you'll be able to see the received code when you turn or press the volume knob.
+<br/>
+
+If you need to execute commands for Vol-,Vol+ and Mute, setup ~/.lircrc . You need to have <b>irexec -d</b> running in the background for these commands to be executed. Everytime you change ~/.lircrc  you need to restart irexec<br/><br/>
+<pre>
+# $HOME/.lircrc
+#S51 Volume Knob
+begin
+ prog = irexec
+ remote = RM-1500
+ button = vol-
+ repeat = 1
+ config = amixer sset Master 1- 
+end
+
+begin
+ prog = irexec
+ remote = RM-1500
+ button = mute
+ repeat = 1
+ config = if [ `amixer sget Master|grep "Front Left:"|awk '{print $3}'` -gt 0 ]; then alsactl store -f ~/.asound.state; amixer sset Master 0; amixer sset 'Power LED' off; else alsactl restore -f ~/.asound.state; amixer sset 'Power LED' on;  fi 
+end
+
+begin
+ prog = irexec
+ remote = RM-1500
+ button = vol+
+ repeat = 1
+ config = amixer sset Master 1+ 
+end
+</pre>
+
+The Mute part is messy because softvol plugin doesn't have the Mute feature. This lircrc allows you to mimic the behaviour under Windows i.e. LED blinking on Mute.<br/><br/>
+
+Anyway, you should change the commands based on your configuration. Eg. If you are using Pulseaudio you probably don't even need to use dmix & softvol. You could just use dbus-send or qdbus to change volume in Pulseaudio or use Pulseaudio's Lirc config in which case you don't need irexec running at all . I don't use Pulseaudio. Someone who is using it can probably explain it.
+</body>
+</html>

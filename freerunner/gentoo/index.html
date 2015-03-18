@@ -1,0 +1,146 @@
+<head><title>Gentoo on OpenMoko Freerunner</title></head>
+<h3>Gentoo on OpenMoko FreeRunner<br/>
+2014-02-25</h3><hr/><br/>
+<b>1. Install crossdev with</b>
+<br/>
+<pre>emerge crossdev</pre>
+<br/>
+<b>2. Build the Toolchain</b>
+<br/>
+<pre>crossdev -v --portage -b --binutils 2.23.1 --gcc 4.7.2 --libc 2.16.0 --kernel 2.6.39 --ov-output /usr/local/portage/ -t armv4tl-softfloat-linux-gnueabi</pre>
+<br/>
+Get linux-headers linux-headers-2.6.39.ebuild and gentoo-headers-base-2.6.39.tar.xz from <a href="files/">files/<a/><br/><br/>
+Run this to get wrapper script armv4tl-softfloat-linux-gnueabi-emerge
+<br/>
+<pre>emerge-wrapper --init</pre>
+<br/>
+<b>3. Kernel </b><br/><br/>
+Follow this guide to get the latest working kernel (2.6.39+)<br/>
+<a href="http://wiki.openmoko.org/wiki/Kernel#Building_the_2.6.39_branch">http://wiki.openmoko.org/wiki/Kernel#Building_the_2.6.39_branch</a><br/><br/>
+Summary of commands
+<pre>
+git clone git://git.openmoko.org/git/kernel.git linux-2.6
+cd linux-2.6
+git checkout --track -b om-gta02-2.6.39 origin/om-gta02-2.6.39
+#Config, thanks to the OpenEmbedded guys
+<a href="http://cgit.openembedded.org/cgit.cgi/openembedded/plain/recipes/linux/linux-2.6.39/om-gta02/defconfig?h=org.openembedded.dev">http://cgit.openembedded.org/cgit.cgi/openembedded/plain/recipes/linux/linux-2.6.39/om-gta02/defconfig?h=org.openembedded.dev</a>
+
+export ARCH="arm"
+export CROSS_COMPILE="armv4tl-softfloat-linux-gnueabi-"
+#Save the config
+make menuconfig
+make -j10
+
+make uImage (emerge u-boot-tools first to get the mkimage binary)
+mkdir GTA02
+make modules_install INSTALL_MOD_PATH=GTA02
+#We'll copy the contents of this to our runtime root in the end
+</pre>
+Flash the kernel
+<pre>dfu-util -a kernel -R -D arch/arm/boot/uImage</pre>
+  
+<b>4. Emerge packages in SYSROOT </b><br/><br/>
+<blockquote> a. Use this profile
+<pre>cd /usr/armv4tl-softfloat-linux-gnueabi/etc/portage/
+ln -s /usr/portage/profiles/default/linux/arm/13.0/armv4t/ make.profile</pre>
+b. Edit make.conf to 
+<pre>add 'distcc' to FEATURES
+add " -nls -iconv -ipv6 -acl" to USE</pre>
+<br/><br/>
+c. Add this to package.use <pre>>=sys-libs/pam-1.1.5 -berkdb</pre>
+d. The first goal is to get a working prompt on the phone and be able to login using ssh. cross merge these packages. To setup busybox and dropbear follow <a href="busybox.html">these steps</a>
+<pre>
+armv4tl-softfloat-linux-gnueabi-emerge -b flex
+armv4tl-softfloat-linux-gnueabi-emerge -b openrc bash
+armv4tl-softfloat-linux-gnueabi-emerge -b coreutils util-linux
+armv4tl-softfloat-linux-gnueabi-emerge -b udex net-tools openssh
+armv4tl-softfloat-linux-gnueabi-emerge -b sys-apps/findutils app-arch/gzip sys-apps/sed sys-process/procps sys-apps/kbd sys-apps/grep
+</pre>
+</blockquote>
+<b>5. Runtime Root</b><br/><br/>
+<blockquote> 
+a. Create a new directory for our runtime root. Do all this as root. In my case it's 
+
+<pre>
+mkdir /disks/storage/openmoko/myroot
+cd /disks/storage/openmoko/myroot
+mkdir root proc sys dev
+chmod -R 555 proc sys
+chmod -R 700 root
+chmod -R 755 dev
+armv4tl-softfloat-linux-gnueabi-emerge --root /disks/storage/openmoko/myroot -K glibc openrc udev bash openssh net-tools sys-apps/findutils app-arch/gzip sys-apps/sed sys-process/procps sys-apps/kbd sys-apps/grep
+</pre>
+b. Copy libgcc_s.so.1 from sysroot to runtime root
+<pre>cp /usr/lib/gcc/armv4tl-softfloat-linux-gnueabi/4.7.1/libgcc_s.so.1 /disks/storage/openmoko/myroot/lib/</pre>
+c. Copy firmware and modules to runtime rootfs
+<pre>cp -rp linux-2.6/GTA02/lib/* myroot/lib/</pre>
+
+d. Configuration
+<blockquote>
+Following configuration was required<br/><br/>
+i. Add user 'sshd' to /etc/passwd and group 'sshd' to /etc/group<br/>Add this line to myroot/etc/passwd <pre>sshd:x:22:22:added by portage for openssh:/var/empty:/sbin/nologin</pre>
+Add this to myroot/etc/group
+<pre>sshd:x:22:</pre>
+If you emerge dbus, you'll have to do similar thing for the user and group 'messagebus'
+<pre>'messagebus:x:101:249:added by portage for dbus:/dev/null:/sbin/nologin' in /etc/passwd
+'messagebus:x:249:' in /etc/group</pre>
+
+ii. Edit myroot/etc/shadow and set the root line to this. You have to remove the asterisk to set an empty password
+<pre>root::10770:0:::::</pre>
+
+iii. Load g_ether kernel module automatically so that we can ssh into the phone over USB. Add this line to myroot/etc/conf.d/modules
+<pre>modules_2_6="g_ether"</pre>
+
+iv. Put config for usb0 interface in myroot/etc/conf.d/net
+<pre>config_usb0="192.168.0.202 netmask 255.255.255.0 brd 192.168.0.255"</pre>
+v. Edit myroot/etc/ssh/sshd_config and set <pre>PermitEmptyPasswords yes</pre>
+vi. Add net.usb0 and sshd to runlevel default
+<pre>
+cd myroot/etc/init.d
+ln -s net.lo net.usb0 
+
+cd myroot/etc/runlevels/default/
+ln -s /etc/init.d/net.usb0 net.usb0
+ln -s /etc/init.d/sshd sshd</pre>
+
+vii. Add the --noclear option to agetty for tty1 in myroot/etc/inittab
+<pre>c1:12345:respawn:/sbin/agetty --noclear 38400 tty1 linux</pre>
+You can comment out all other terminals<br/><br/>
+viii. Set the hostname in <pre>nano myroot/etc/conf.d/hostname</pre>
+</blockquote>
+</blockquote>
+<b>6. Flash Rootfs</b> To use <a href="nfs.html">NFS Root</a>, follow these steps<br/>
+<pre>
+cd /disks/storage/openmoko
+mkfs.jffs2 -r myroot/ -o openrc.jffs2 (emerge mtd-utils to get mkfs.jffs2)
+dfu-util -a rootfs -R -D openrc.jffs2
+</pre>
+
+<b>7. Other Packages</b><br/><br/>
+To begin with, emerge nano, Minicom to test the modem. To switch on the modem (/dev/ttySAC0) [1152000 8N1], do
+<pre>echo 1 > /sys/bus/platform/devices/gta02-pm-gsm.0/power_on
+Then you can look at emerging a GSM stack like ofono
+</pre>
+<pre>armv4tl-softfloat-linux-gnueabi-emerge xf86-video-fbdev</pre> for xorg works
+<hr>
+Note 1: The above steps should work for any toolchain built using crossdev<br/>
+Note 2: For using DISTCC while cross compiling, refer to <a href="https://wiki.gentoo.org/wiki/Distcc/Cross-Compiling">https://wiki.gentoo.org/wiki/Distcc/Cross-Compiling</a>. To install the toolchain on helper boxes, you don't need to build it again. Just copy over /usr/portage/packages/cross-armv4tl-softfloat-linux-gnueabi/ and run
+<pre>crossdev -v --portage -K --binutils 2.23.1 --gcc 4.7.2 --libc 2.16.0 --kernel 2.6.39 --ov-output /usr/local/portage/ -t armv4tl-softfloat-linux-gnueabi</pre>
+Apart from the steps mentioned in the cross compile guide, I had to create the following symlinks on all the boxes including the host
+<pre>
+cd /usr/lib/distcc/bin/
+ln -s /usr/bin/distcc armv4tl-softfloat-linux-gnueabi-gcc
+ln -s /usr/bin/distcc armv4tl-softfloat-linux-gnueabi-g++
+ln -s /usr/bin/distcc armv4tl-softfloat-linux-gnueabi-c++
+</pre>
+<hr>
+<b>References</b><br/>
+<a href="https://www.gentoo.org/proj/en/base/embedded/handbook/">https://www.gentoo.org/proj/en/base/embedded/handbook/</a><br/>
+<a href="http://www.gentoo.org/proj/en/base/embedded/">http://www.gentoo.org/proj/en/base/embedded/</a><br/>
+<a href="https://www.gentoo.org/proj/en/base/embedded/cross-development.xml">https://www.gentoo.org/proj/en/base/embedded/cross-development.xml</a><br/>
+<a href="http://tinderbox.dev.gentoo.org/cross-x86/">http://tinderbox.dev.gentoo.org/cross-x86/</a><br/>
+<a href="https://wiki.gentoo.org/wiki/Distcc/Cross-Compiling">https://wiki.gentoo.org/wiki/Distcc/Cross-Compiling</a><br/>
+<a href="http://wiki.openmoko.org/wiki/Kernel#Building_the_2.6.39_branch">http://wiki.openmoko.org/wiki/Kernel#Building_the_2.6.39_branch</a><br/>
+<a href="http://wiki.openmoko.org/wiki/Flashing_the_Neo_FreeRunner#Using_dfu-util">http://wiki.openmoko.org/wiki/Flashing_the_Neo_FreeRunner#Using_dfu-util</a><br/>
+<hr>
+You can reach me on <img src="/email.jpg"/>

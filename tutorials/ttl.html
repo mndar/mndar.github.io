@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=iso-8859-1">
+	<TITLE>ISPs Messing with TTL</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.4  (Linux)">
+	<META NAME="CREATED" CONTENT="20081012;15144200">
+	<META NAME="CHANGED" CONTENT="20081012;16202400">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { size: 8.5in 11in; margin-left: 0.79in; margin-right: 0.79in; margin-top: 0.53in; margin-bottom: 0.78in }
+		P { margin-bottom: 0.08in }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<P ALIGN=CENTER STYLE="margin-left: 0.01in; margin-right: 0.02in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=4 STYLE="font-size: 15pt"><U><B>ISPs
+messing with TTL</B></U></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-left: 0.01in; margin-right: 0.02in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif">Is your ISP messing with TTL? Is he
+preventing you from sharing your Internet connection? Does your
+connection work under Windows and not under Linux ?<br>This is how you find out. </FONT>
+</P>
+<P ALIGN=LEFT STYLE="margin-left: 0.01in; margin-right: 0.02in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif">TTL (Time To Live) is present in any
+IP packet. It keeps track of how many routers the packet has passed
+through (i.e. the number of hops). It gets decremented as it passes
+through each router. <br>As the TTL is reduced by 1 at every
+router, its possible to guess that a particular packet corresponds to
+a request from a NATed computer. The default TTL on Linux boxes is
+64. On Windows its 32. Try changing the TTL. Test if your connection
+still works. Below you will find instructions on how to do this.</FONT></P>
+
+<P ALIGN=LEFT STYLE="margin-left: 0.01in; margin-right: 0.02in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif">Once you have a router between you and
+your ISP, the TTL of any packet when it reaches the ISP server will
+be 63 instead of 64 in case of Linux. (31 instead of 32 in case of
+Windows). Based on this information, packets/connection requests can
+be accepted/dropped.<br>So if you are behind a router and your
+Internet connection doesn't work, try incrementing the TTL by 1.</FONT></P>
+<P ALIGN=LEFT STYLE="margin-left: 0.01in; margin-right: 0.02in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif">I've seen ISPs accepting only specific
+TTL values making their connections usable only under a specific
+OS(Windows). </FONT>
+</P>
+<P ALIGN=LEFT STYLE="margin-left: 0.01in; margin-right: 0.02in; margin-bottom: 0in">
+</P>
+<P ALIGN=LEFT STYLE="margin-left: 0.01in; margin-right: 0.02in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif"><B><U>Instructions on how to change TTL</U></B><br/><B>	Linux</B></FONT></P>
+<OL>
+	<LI><P ALIGN=LEFT STYLE="margin-right: 0.02in; margin-bottom: 0in"><FONT FACE="Arial, sans-serif">Change
+	Default TTL. This will change the TTL for all interfaces, all
+	packets.</FONT><br><FONT COLOR="#4c4c4c"><FONT FACE="Arial, sans-serif">echo
+	32 &gt; /proc/sys/net/ipv4/ip_default_ttl</FONT></FONT><br/>(Tested
+	with kernel 2.6.XX )</FONT></P>
+	<LI><P ALIGN=LEFT STYLE="margin-right: 0.02in; margin-bottom: 0in"><FONT FACE="Arial, sans-serif">Using
+	iptables, you can have greater control on how TTLs are manipulated.
+	You have to use the MANGLE table.</FONT><br><FONT COLOR="#4c4c4c"><FONT FACE="Arial, sans-serif">iptables
+	-t mangle -A POSTROUTING -o ppp0 -j TTL --ttl-set 32</FONT></FONT><br/><FONT FACE="Arial, sans-serif">if
+	you want to just increment or decrement the value, use <FONT COLOR="#4c4c4c">&ndash;ttl-inc</FONT>
+	or <FONT COLOR="#4c4c4c">&ndash;ttl-dec</FONT> instead of <FONT COLOR="#4c4c4c">&ndash;ttl-set</FONT>.</FONT></P>
+</OL>
+<P ALIGN=LEFT STYLE="margin-left: 0.01in; margin-right: 0.02in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif"><B>Windows</B></FONT></P>
+<P ALIGN=LEFT STYLE="margin-left: 0.5in; margin-right: 0.02in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif">To change the Default TTL, make the
+following registry change</FONT><br>
+<FONT FACE="Arial, sans-serif">Under
+<FONT COLOR="#4c4c4c">HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Tcpip\Parameters
+ </FONT><FONT COLOR="#808080"> </FONT> create a new DWORD called
+<FONT COLOR="#4c4c4c">DefaultTTL</FONT>. Set this value to to the one
+you need. There are radio buttons allowing to specify the value in
+either Hex or Decimal. <br>You have to restart your computer for this setting to take effect</FONT>
+</P>
+<P ALIGN=LEFT STYLE="margin-left: 0.01in; margin-right: 0.02in; margin-bottom: 0in">
+</P>
+<P ALIGN=LEFT STYLE="margin-left: 0.01in; margin-right: 0.02in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif">All TTL values mentioned in this
+document are in Decimal. I suggest trying values 32,64 and 128 or
+higher. Increment these by 1 if you are behind a router.<br>
+ If you are having any trouble making these changes, you can reach me on &nbsp;&nbsp;</FONT><IMG SRC="/email.jpg" NAME="graphics1" WIDTH=232 HEIGHT=26 BORDER=0><br><br>
+<P ALIGN=LEFT STYLE="margin-left: 0.01in; margin-right: 0.02in; margin-bottom: 0in">
+<FONT COLOR="#666666"><FONT FACE="Arial, sans-serif"><U>Note:</U>
+This information is for educational purposes only.<BR>This information
+has been verified by testing it with pppoe connections but it might
+apply to other forms of Internet connectivity as well.</FONT></FONT></P>
+</BODY>
+</HTML>

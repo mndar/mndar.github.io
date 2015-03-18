@@ -1,0 +1,9 @@
+<pre>armv4tl-softfloat-linux-gnueabi-emerge --root /disks/storage/openmoko/myroot busybox
+armv4tl-softfloat-linux-gnueabi-emerge -b dropbear
+armv4tl-softfloat-linux-gnueabi-emerge --root /disks/storage/openmoko/myroot glibc dropbear -K
+cp /usr/lib/gcc/armv4tl-softfloat-linux-gnueabi/4.7.1/libgcc_s.so.1 /disks/storage/openmoko/myroot/lib/
+cp -rpv files_busybox/* myroot/</pre>
+
+<b>Rootfs Files</b> <a href="files/files_busybox.tar.bz2">Download<a>
+<pre>tar jxvpf files_busybox.tar.bz2
+cp -rpv files_busybox/* myroot/</pre>
