@@ -1,0 +1,13 @@
+<head><title>GStreamer XOverlay and VideoOverlay</title></head>
+I found that information about using XOverlay interfaces in GStremer was scattered. This code below demonstrates how to use XOverlay interface in GStreamer 0.10.36 and Video Overlay interface in Gstreamer 1.0.5 to display the output of a video pipeline. I've used the feed from my webcam but this should work with other pipelines as well.<br/><br/>
+<hr>
+There are 3 methods out there.<br/><br/>
+1. The one described in the SDK Tutorials<br/>
+   <a href="http://docs.gstreamer.com/display/GstSDK/Basic+tutorial+5%3A+GUI+toolkit+integration">http://docs.gstreamer.com/display/GstSDK/Basic+tutorial+5%3A+GUI+toolkit+integration</a>. This uses the XOverlay interface but only works in the SDK. The reason is mentioned here <a href="http://gstreamer-devel.966125.n4.nabble.com/The-latest-GstreamerSDK-and-gst-x-overlay-set-window-handle-ubuntu-td4656680.html">http://gstreamer-devel.966125.n4.nabble.com/The-latest-GstreamerSDK-and-gst-x-overlay-set-window-handle-ubuntu-td4656680.html</a><br/><br/>
+2. The one while using GStreamer 0.10.36 using the XOverlay interface. Refer <a href="files/cam.c">cam.c</a>(GTK+) or <a href="files/qtcam0.zip">qtcam0.zip</a>(Qt)<br/><br/>
+3. The one while using GStreamer 1.0.5 using the Video Overlay interface. Refer <a href="files/cam1.c">cam1.c</a>(GTK+) or <a href="files/qtcam1.zip">qtcam1.zip</a>(Qt).<br/><br/>
+<hr>
+Note 1: License for all the code is GPL.<br/>
+<hr>
+You can reach me on <img src="/email.jpg"/>
+<a href="https://github.com/mndar/gstreamer">Code on Github<a/>
