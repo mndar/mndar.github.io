@@ -51,9 +51,9 @@
                                         </button>
                                         <div class="collapse show " id="linux-collapse">
                                           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Linux Kernel - Mars 2020 Contributor</a></li>
-                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Loyalty Programme - Bahrain</a></li>
-                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">FreeSwitch</a></li>
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onClick="showContent('loyalty_programme_bahrain')">Loyalty Programme - Bahrain</a></li>
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="showContent('freeswitch_voip_voice_trading')">FreeSwitch - VoiP Trading Terminals</a></li>
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="showContent('mars_2020_contributor')">Linux Kernel - Mars 2020 Contributor</a></li>
                                           </ul>
                                         </div>
                                       </li>
@@ -179,6 +179,61 @@
         <hr>
         <h5>Email: emailmandar@gmail.com</h5>
         <h5>Cell: +91 9967820381</h5>
+    </div>
+    <div class="visually-hidden" id="loyalty_programme_bahrain">
+      <hr/>
+      <h4>Loyalty Programme For a Premier Retail Chain In Bahrain</h4>
+      <p><i>Mifare Smart Cards and Payments Terminals & Pinpads Interfaced Over RS232</i></p>
+      <hr>
+      <p><b><u>The Requirement:</u></b></p>
+      <p>The retail chain wanted to move away from their previous vendor to a new Loyalty Programme having Payment Terminals and Pin Pads that would
+      make the Sales experience smoother. The retail chain had Point-Of-Sale (POS) Terminals running DOS that provided an RS232 Interface for the billing data.
+      The job was to capture the data over RS232, write to the Mifare cards, provide the POS terminal data from the Mifare card and to have an option to migrate
+      the data from the old system to the new system by using free area on the Mifare cards.
+      </p>
+      <p><b><u>The Solution:</u></b></p>
+      <p>Living and Developing the solution in Bahrain was an unforgettable experience. After engaging with the client and getting a detailed description of the requiremnts,
+        understanding the pain points and their reasons for wanting the new solution, I began the coding binges in the hotel. The payment terminal API was well documented with 
+        coding done in C. A GCC 3.4 Cross compiler provided by the payment terminal vendor and the code signing utilities provided as seamless development experience.
+        The solution was developed in a mere 3 weeks and deployed just before Ramadan, just in time.
+      </p>
+      <p><b><u>Technologies:</u></b></p>
+      <p>Castles Vega 9300, Mifare, ISO 14443, Payment Terminals, RS232, DOS</p>
+    </div>
+    <div class="visually-hidden" id="freeswitch_voip_voice_trading">
+      <hr/>
+      <h4></h4>
+      <p><i></i></p>
+      <hr>
+      <p><b><u>The Requirement:</u></b></p>
+      <p></p>
+      <p><b><u>The Solution:</u></b></p>
+      <p></p>
+      <p><b><u>Technologies:</u></b> </p>
+      <p></p>
+    </div>
+    <div class="visually-hidden" id="mars_2020_contributor">
+      <hr/>
+      <h4>Linux Kernel Code In the NASA Ingenuity Helicopter</h4>
+      <p><i>My contribution the Linux Kernel earned me the Mars 2020 Contributor badge on GitHub</i></p>
+      <hr>
+      <p><b><u>The Requirement:</u></b></p>
+      <p>Being a huge Music fan, I was into external DACs (Digital To Analog Converters or External Sound Cards)  in the mid-late 2000s. 
+        I bought the Creative USB X-FI USB S51 and realzied that the Volume Knob on the device and the LED had no support under Linux. 
+        Thus began the journey of learning how to write Linux Kernel Modules and patching the Linux Kernel.</p>
+        <p>This contribution to the Linux Kernel earned me the <a target="blank" href="https://github.com/mndar?achievement=mars-2020-contributor&tab=achievements">Mars 2020 Contributor Badge</a> on GitHub</p>
+      <p><b><u>The Solution:</u></b></p>
+      <p>I used SniffUSB under WindowsXP to capture the USB Traffic as I used the Volume Knob and kept a watch on the LED on the Creative USB X-Fi S51. 
+      After a few hours of capturing data and sifting through it, I traced down the Control Transfers in the URBs (USB Request Blocks) that had the repeating
+      pattern with the Volume Knob being turned clockwise, anticlockwise and being pressed (The volume knob also served as a button to mute audio). 
+      </p>
+      <p>
+        Going through the Linux Kernel source code, I found the Struct that held values for similar devices. Filling the values I had captured and many compiles and restarts a 
+        few times got me a functional usbaudio kernel module that supported the volume knob and passed on the events to LIRC (Linux Infrared Remote Control). I made the patch and 
+        sent the <a target="blank" href="https://mailman.alsa-project.org/pipermail/alsa-devel/2010-October/033100.html">Patch on the Alsa-Devel mailing list</a> where it was reviewd and accepted into kernel 2.6.37.
+      </p>
+      <p><b><u>Technologies:</u></b> </p>
+      <p>Linux Kernel, SniffUSB, Reverse Engineering, USB, Linux Kenrel Modules, ALSA, LIRC</p>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="index.js"></script>
