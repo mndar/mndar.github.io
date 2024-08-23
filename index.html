@@ -63,8 +63,8 @@
                                           </button>
                                           <div class="collapse " id="embedded-linux-collapse">
                                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Surveillance System</a></li>
-                                              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Edge Analytics - NVidia Deepstream</a></li>
+                                              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onClick="showContent('surveillance_system')">Surveillance System</a></li>
+                                              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onClick="showContent('nvidia_deepstream_edge_analytics')">Edge Analytics - NVidia Deepstream</a></li>
                                             </ul>
                                           </div>
                                         </li>
@@ -74,7 +74,7 @@
                                             </button>
                                             <div class="collapse " id="c-collapse">
                                               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Pattern Matching in Address - Petroleum Industry</a></li>
+                                                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="showContent('pattern_matching_addresses')">Pattern Matching in Address - Petroleum Industry</a></li>
                                               </ul>
                                             </div>
                                           </li>
@@ -84,18 +84,18 @@
                                             </button>
                                             <div class="collapse " id="python-collapse">
                                               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">RootFS Build Factory - CentOS - GSoC 2015</a></li>
+                                                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="showContent('rootfs_build_factory_centos_gsoc_2015')">RootFS Build Factory - CentOS - GSoC 2015</a></li>
                                               </ul>
                                             </div>
                                           </li>  
                                           <li class="mb-1">
                                             <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#sysadmin-collapse" aria-expanded="true">
-                                              System Administration
+                                              System Admin
                                             </button>
                                             <div class="collapse " id="sysadmin-collapse">
                                               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="alert()">Managing Tech @ A Stock Trading Company</a></li>
-                                                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">OpenVPN for Voice Trading @ A Stock Trading Company</a></li>
+                                                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="showContent('network_engineer')">Managing Tech @ A Stock Trading Company</a></li>
+                                                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="showContent('openvpn_embedded_linux')">OpenVPN for Voice Trading @ A Stock Trading Company</a></li>
                                               </ul>
                                             </div>
                                           </li>
@@ -202,15 +202,19 @@
     </div>
     <div class="visually-hidden" id="freeswitch_voip_voice_trading">
       <hr/>
-      <h4></h4>
-      <p><i></i></p>
+      <h4>FreeSwtich - VoIP Phone For Stock Traders</h4>
+      <p><i>FreeSwitch Event System and the Twisted Python Library</i></p>
       <hr>
       <p><b><u>The Requirement:</u></b></p>
-      <p></p>
+      <p>The company I was working for needed a new server to manage the calls for their VoIP trading terminals. The VoIP Phone terminals running Arch Linux were
+        managing the calls with the help of a Proprietary Server. Moving to FreeSwitch, a new management software had to be develeoped.
+      </p>
       <p><b><u>The Solution:</u></b></p>
-      <p></p>
+      <p>Using the Twisted Python Library, I worked on controlling FreeSwitch via the event system interface and managing the calls, initiating them, terminating them and provided
+        an output interface to view the status of the calls
+      </p>
       <p><b><u>Technologies:</u></b> </p>
-      <p></p>
+      <p>FreeSwitch, Arch Linux, Embedded Linux, VoIP Phone</p>
     </div>
     <div class="visually-hidden" id="mars_2020_contributor">
       <hr/>
@@ -234,6 +238,101 @@
       </p>
       <p><b><u>Technologies:</u></b> </p>
       <p>Linux Kernel, SniffUSB, Reverse Engineering, USB, Linux Kenrel Modules, ALSA, LIRC</p>
+    </div>
+    <div class="visually-hidden" id="surveillance_system">
+      <hr/>
+      <h4>Surveillance - The Next Step In Video Monitoring</h4>
+      <p><i>Emnbedded Linux Systems used as Surveillance Devices</i></p>
+      <hr>
+      <p><b><u>The Requirement:</u></b></p>
+      <p>With increasing focus on our security, we need surveillance solutions to get better, faster. Solutions need to get smarter to reduce the human workload in monitoring systems. The project I am about to present is one such solution. It's called Surveillance. It’s not just an application which allows capture and storage of video stream 24x7. 
+        It’s an extendable framework that allows you to do custom processing on video streams using simple shared libraries/ GStreamer plugins and report results in plain text, allowing you to easily parse it and take decisions. This system comprises of Cameras/Camera Sensors, Processing Hardware (camera endpoints) and a central server. Processing happens on the camera endpoints and is collected by the central server.</p>
+      <p><b><u>The Solution:</u></b></p>
+      <p>A custom GstMeta library provides an API for GStBaseTransform plugins to add custom metadata related to processing a video stream. The GstMeta is retreived and posted on the Gstreamer Bus which is retrieved by the monitoring application.
+        I developed this as a framework. The monitoring application allows custom video analytics plugins to simply dropped in to a directory and configured for use with the monitoing application.
+        I presented a talk at the <a target="blank" href="https://gstconf.ubicast.tv/permalink/v125619e7ab055tsn48u/iframe/">GStreamer Conference 2016 in Berlin</a> titled <b>Intelligent Surveillance</b> describing the project.
+      </p>
+      <p><b><u>Technologies:</u></b> </p>
+      <p>GStreamer, Gtk+, Qt, Gentoo, Ubuntu, OpenCV, Dlib</p>
+    </div>
+    <div class="visually-hidden" id="nvidia_deepstream_edge_analytics">
+      <hr/>
+      <h4>Edge Analytics architecture on the NVidia Jetson Platform</h4>
+      <p><i>An Extensible architecture using Nvidia Deepstream and GStreamer</i></p>
+      <hr>
+      <p><b><u>The Requirement:</u></b></p>
+      <p>A Computer Vision company was running their algorithms as independent applicaitons. 
+        The job was to develop a architecture using the Nvidia Deepstream framework that will allow plugging in of any algorithm for any appplication into the architecture.</p>
+      <p><b><u>The Solution:</u></b></p>
+      <p>Living in Chennai was a memorable experience. GStreamer expertise combined with the functionality provided by NVidia Deepstream provided the right tools for 
+        developing an extensible architecture for the Edge Analytics platform. After integrating the <a target="blank" href="https://www.stereolabs.com/en-in/products/zed-2">Zed 2 from Stereolabs</a> with the <a target="blank" href="https://www.nvidia.com/en-in/autonomous-machines/embedded-systems/"/>Nvidia Jetson platform</a>, I designed a architecture capable 
+        of supporting growing number of applications using the <a target="blank" href="https://developer.nvidia.com/deepstream-sdk">NVida Deepstream framework</a> for the company. Dynamically Loadable libraries were used to provide a "drop new functioanlity into directory" feature. The end result was a 
+        happy client with architecture locked under NDA. That's why you don't see many details here. Sorry!
+      </p>
+      <p><b><u>Technologies:</u></b> </p>
+      <p>NVidia Deepstream, NVidia Jetson, GStreamer, C, C++</p>
+    </div>
+    <div class="visually-hidden" id="pattern_matching_addresses">
+      <hr/>
+      <h4>Pattern Matching Addresses - Petroleum Industry</h4>
+      <p><i>Finding duplicate addresses in a very large database</i></p>
+      <hr>
+      <p><b><u>The Requirement:</u></b></p>
+      <p>Government Subsidized gas connections were being missued by fraudsters by manipulating addresses to receive a double subsidy. The job was to design
+        and implement an algorithm to find such duplicate addresses, frequently manipulated tactfully to avoid theft detection.
+      </p>
+      <p><b><u>The Solution:</u></b></p>
+      <p>Again not many details during the NDA but here's a broad view of what I did. Regex was used extensively to find known manipulated words. Using a geographical database,
+        processing size was considerable reduced by running computationally heavy processing only on addresses grouped by approximate location. The result was a stunning expose on how
+        miscreants were manipulating names and addresses to benefit from Government subsidies illegally.
+      </p>
+      <p><b><u>Technologies:</u></b> </p>
+      <p>Regex, MySQl, MsSQL, Cursors, SQL, C, C++</p>
+    </div>
+    <div class="visually-hidden" id="rootfs_build_factory_centos_gsoc_2015">
+      <hr/>
+      <h4>RootFS Build Factory for Centos - GSoC 2015</h4>
+      <p><i>A successufl Google Summer of Code 2015</i></p>
+      <hr>
+      <p><b><u>The Requirement:</u></b></p>
+      <p>CentOS ARMv7 was being built and a toolkit to generate rootfs images for various vendor boards was needed. Every vendor could release their their custom kernel and a mechanism was needed 
+        where CentOS could be run there boards with custom kernels and packages.
+      </p>
+      <p><b><u>The Solution:</u></b></p>
+      <p>After discussions with my mentor, I designed a Python based solution where a XML generated using a NCurses GUI (PyDialog) would be used to generated a custom RootFS for the board.
+        The project is on GitHub <a target="blank" href="https://www.github.com/mndar/rbf">here</a>
+      </p>
+      <p><b><u>Technologies:</u></b> </p>
+      <p>CentOS, Python, Yum, Dnf, Bash, RPM, RootFS, Embedded Linux, Custom Kernels</p>
+    </div>
+    <div class="visually-hidden" id="network_engineer">
+      <hr/>
+      <h4>Managing Tech @ A Stock Trading Company</h4>
+      <p><i>My first job as a Network Engineer</i></p>
+      <hr>
+      <p>Stock trading companies are high stake operations and near flawless uptime is a must requirement. This was my first job and I thoroughly enjoyed it</p>
+      <p>I managed the network of a hundred computers for over a year ensuring smooth functioning of the facility. My job involved interacting with various vendors to ensure
+        the client was able to effectively use software and hardware systems supplied by the vendors. I managed Eicon card based sytems, an Internet Trading System, Cisco Routers and Fortinet firewalls
+      </p>
+      <p></p>
+      <p><b><u>Technologies:</u></b> </p>
+      <p>Networking, Hardware, Cisco Routers, Fortinet Firewalls</p>
+    </div>
+    <div class="visually-hidden" id="openvpn_embedded_linux">
+      <hr/>
+      <h4>OpenVPN for Voice Trading @ A Stock Trading Company</h4>
+      <p><i>Embedded Linux Voip Phones networked over a Virtual Private Network (VPN)</i></p>
+      <hr>
+      <p><b><u>The Requirement:</u></b></p>
+      <p>At the peak of COVID as the city went into lockdown, a stock trader was left with traders unable to trade efficiently as their voice trading terminals, voip phones running embeeded linux 
+        couldn't be used from the trader's homes. I was hired to design a Virutal Private Network (VPN) solution to have them on the company network.
+      </p>
+      <p><b><u>The Solution:</u></b></p>
+      <p>I desinged the VPN solution to have a OpenVPN Server on the client's network exposed via their public IP. The Embeedded Linux terminals running Ubuntu were configured
+       to have a OpenVPN client start at boot and login to the company network making them local rather than remote as far as the voip phone application running on them was concered. 
+      The result was a stock trader having full trading fucntionality during a Corona virus lockdown</p>
+      <p><b><u>Technologies:</u></b> </p>
+      <p>OpenVPN, Ubunutu, Embedded Linux, Networking, NAT Traversal</p>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="index.js"></script>
