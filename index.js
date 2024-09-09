@@ -16,3 +16,19 @@
     
 
   }
+
+  function openLink (link_name) {
+    switch (link_name) {
+      case "blog":
+        url = "https://medium.com/@mandar.joshi.4084";
+        break;
+      case 'linkedin':
+        url = "https://www.linkedin.com/in/mandar-joshi-02001b30a/";
+        break;
+      case 'github':
+        url = "https://github.com/mndar";
+        break;
+    }
+    window.open(url, '_blank').focus();
+  }
+  
