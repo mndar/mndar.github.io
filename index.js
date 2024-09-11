@@ -28,6 +28,9 @@
       case 'github':
         url = "https://github.com/mndar";
         break;
+      case 'resume':
+        url = "https://mndar.github.io/resume/Mandar Joshi - Linux Developer.pdf";
+        break;
     }
     window.open(url, '_blank').focus();
   }
