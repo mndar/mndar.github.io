@@ -23,7 +23,7 @@
         url = "https://medium.com/@mandar.joshi.4084";
         break;
       case 'linkedin':
-        url = "https://www.linkedin.com/in/mandar-joshi-02001b30a/";
+        url = "https://www.linkedin.com/in/mandardevlinux";
         break;
       case 'github':
         url = "https://github.com/mndar";
