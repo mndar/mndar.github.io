@@ -20,7 +20,7 @@
   function openLink (link_name) {
     switch (link_name) {
       case "blog":
-        url = "https://medium.com/@mandar.joshi.4084";
+        url = "https://mandarjoshi4084.substack.com";
         break;
       case 'linkedin':
         url = "https://www.linkedin.com/in/mandardevlinux";
