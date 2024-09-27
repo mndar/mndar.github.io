@@ -33,6 +33,7 @@ body {
 .nav-masthead .nav-link {
   color: rgba(255, 255, 255, .5);
   border-bottom: .25rem solid transparent;
+  
 }
 
 .nav-masthead .nav-link:hover,

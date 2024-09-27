@@ -1,6 +1,6 @@
 <!doctype html>
-<html lang="en" data-bs-theme="dark">
-  <head>
+<html lang="en" class="h-100" data-bs-theme="auto">
+  <head><script src="color-modes.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5S3EP0W24T"></script>
     <script>
@@ -13,381 +13,133 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Mandar Joshi">
-    <title>Mandar Joshi - Linux Developer</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="index.css" rel="stylesheet">
-</head>
-
-<body>
-    <div class="p-5 bg-dark text-white text-center">
-        <h1></h1>
-        <p></p> 
-    </div>
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="flex-shrink-0 p-3" >
-                        <img src="./linux_developer_mandar.jpeg" class="rounded-circle col-sm-12" />
-                        <span class="visually-hidden">Profile</span>
-                        <hr>
-                        <div class="col-sm-12 text-center"><h2>Mandar Joshi</h2><h6>Linux Developer</h6></div>
-                        <hr>
-                        <ul class="list-unstyled ps-0">
-                            <li class="mb-1">
-                              <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-                                <b>About Me</b>
-                              </button>
-                              <div class="collapse show" id="home-collapse">
-                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                  <li><a href="#content" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="showContent('introduction')">Introduction</a></li>
-                                  <li><a href="#content" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="showContent('contact')">Contact</a></li>
-                                  <li><a href="#home-collapse" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="openLink('linkedin')">LinkedIn</a></li>
-                                  <li><a href="#home-collapse" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="openLink('blog')">Blog</a></li>
-                                  <li><a href="#home-collapse" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="openLink('github')">GitHub</a></li>
-                                  <li><a href="#home-collapse" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="openLink('resume')">Resume</a></li>
-                                </ul>
-                              </div>
-                            </li>
-                            <li class="mb-1">
-                              <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-                                <b>Projects</b>
-                              </button>
-                              <div class="collapse show" id="dashboard-collapse">
-                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                  <li>
-                                    <ul class="list-unstyled ps-0">
-                                      <li class="mb-1">
-                                        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#linux-collapse" aria-expanded="true">
-                                          Linux
-                                        </button>
-                                        <div class="collapse show " id="linux-collapse">
-                                          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                            <li><a href="#content" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onClick="showContent('loyalty_programme_bahrain')">Loyalty Programme - Bahrain</a></li>
-                                            <li><a href="#content" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="showContent('freeswitch_voip_voice_trading')">FreeSwitch - VoiP Trading Terminals</a></li>
-                                            <li><a href="#content" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="showContent('mars_2020_contributor')">Linux Kernel - Mars 2020 Contributor</a></li>
-                                          </ul>
-                                        </div>
-                                      </li>
-                                        <li class="mb-1">
-                                          <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#embedded-linux-collapse" aria-expanded="true">
-                                            Embedded Linux
-                                          </button>
-                                          <div class="collapse " id="embedded-linux-collapse">
-                                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                              <li><a href="#content" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onClick="showContent('surveillance_system')">Surveillance System</a></li>
-                                              <li><a href="#content" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onClick="showContent('nvidia_deepstream_edge_analytics')">Edge Analytics - NVidia Deepstream</a></li>
-                                            </ul>
-                                          </div>
-                                        </li>
-                                        <li class="mb-1">
-                                            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#c-collapse" aria-expanded="true">
-                                              C/C++
-                                            </button>
-                                            <div class="collapse " id="c-collapse">
-                                              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                                <li><a href="#content" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="showContent('pattern_matching_addresses')">Pattern Matching in Address - Petroleum Industry</a></li>
-                                              </ul>
-                                            </div>
-                                          </li>
-                                          <li class="mb-1">
-                                            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#python-collapse" aria-expanded="true">
-                                              Python
-                                            </button>
-                                            <div class="collapse " id="python-collapse">
-                                              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                                <li><a href="#content" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="showContent('rootfs_build_factory_centos_gsoc_2015')">RootFS Build Factory - CentOS - GSoC 2015</a></li>
-                                              </ul>
-                                            </div>
-                                          </li>  
-                                          <li class="mb-1">
-                                            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#sysadmin-collapse" aria-expanded="true">
-                                              System Admin
-                                            </button>
-                                            <div class="collapse " id="sysadmin-collapse">
-                                              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                                <li><a href="#content" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="showContent('network_engineer')">Managing Tech @ A Stock Trading Company</a></li>
-                                                <li><a href="#content" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="showContent('openvpn_embedded_linux')">OpenVPN for Voice Trading @ A Stock Trading Company</a></li>
-                                              </ul>
-                                            </div>
-                                          </li>
-                                  </li>
-                                </ul>
-                              </div>
-                            </li>
-                            
-                            <li class="border-top my-3"></li>
-                            
-                          </ul>
-                </div>
-            </div>
-            <div class="col-sm-6" id="content">
-                <hr>
-                <h2>Hi, I'm Mandar</h2>
-                <hr>
-                <p>I'm a Linux Developer with software development experiences on Linux
-                  spanning over 16 years. My expertrise is in developing software in C,C++,Python
-                  on the Linux opertating system.</p>
-                <p><b>Top Skills:</b> C, C++, Python, GStreamer, GTK+, Qt, Embedded Linux, OpenCV, Dlib, Nvidia Deepstream, Networking</p>
-                <p>I have worked in 🇮🇳 India,  🇧🇭 Bahrain and 🇯🇵 Japan. I  have given a talk on using <a target="blank" href="https://gstconf.ubicast.tv/permalink/v125619e7ab055tsn48u/iframe/">GStreamer for Security applications</a> at the GStreamer 
-                   Conference in Berlin, 🇩🇪 Germany in 2016. My contribution to the Linux kernel earned me the <a target="blank" href="https://github.com/mndar?achievement=mars-2020-contributor&tab=achievements">Mars 2020 Contributor Badge on Github</a>.
-                </p>
-
-                <p>I am passionate about engaging with customers, understanding their needs and
-                  developing optimum solutions for them.
-                </p>
-                <p>  
-                  Over the years I have developed software using numerous libraries and on x86 and ARM 
-                  systems supporting client requirements and solving busineess critical problems.
-                  Having worked on a range of requirements from speeding up processing of raw XML
-                  files to edge analytics in industries ranging from Petroleum to Manfucaturing, I am
-                  sure I can be of assitance to your technology needs.
-                </p>
-                <p>
-                  On the left, you will a brief write up about some of the projects I have developed.
-                </p>
-                <p>
-                  If you have any requirements for software development on Linux, reach out ot me on
-                  <b>emailmandar@gmail.com </b> or on my cell <b>+91 9967820381</b>. You can find me on <a target="blank" href="https://www.linkedin.com/in/mandar-joshi-02001b30a/">LinkedIn</a> and 
-                  <a target="blank" href="https://www.github.com/mndar">GitHub</a> as well. </p>
-                  <button type="button" class="btn btn-primary" onclick="showContent('contact')">Contact Me</button>
-        </div>
-        
-    </div>
-    <div class="visually-hidden" id="introduction">
-      <hr>
-      <h2>Hi, I'm Mandar</h2>
-      <hr>
-      <p>I'm a Linux Developer with software development experiences on Linux
-        spanning over 16 years. My expertrise is in developing software in C,C++,Python
-        on the Linux opertating system.</p>
-      <p><b>Top Skills:</b> C, C++, Python, GStreamer, GTK+, Qt, Embedded Linux, OpenCV, Dlib, Nvidia Deepstream, Networking</p>
-      <p>I have worked in 🇮🇳 India,  🇧🇭 Bahrain and 🇯🇵 Japan. I  have given a talk on using <a target="blank" href="https://gstconf.ubicast.tv/permalink/v125619e7ab055tsn48u/iframe/">GStreamer for Security applications</a> at the GStreamer 
-         Conference in Berlin, 🇩🇪 Germany in 2016. My contribution to the Linux kernel earned me the <a target="blank" href="https://github.com/mndar?achievement=mars-2020-contributor&tab=achievements">Mars 2020 Contributor Badge on Github</a>.
-      </p>
-
-      <p>I am passionate about engaging with customers, understanding their needs and
-        developing optimum solutions for them.
-      </p>
-      <p>  
-        Over the years I have developed software using numerous libraries and on x86 and ARM 
-        systems supporting client requirements and solving busineess critical problems.
-        Having worked on a range of requirements from speeding up processing of raw XML
-        files to edge analytics in industries ranging from Petroleum to Manfucaturing, I am
-        sure I can be of assitance to your technology needs.
-      </p>
-      <p>
-        On the left, you will a brief write up about some of the projects I have developed.
-      </p>
-      <p>
-        If you have any requirements for software development on Linux, reach out ot me on
-        <b>emailmandar@gmail.com </b> or on my cell <b>+91 9967820381</b>. You can find me on <a target="blank" href="https://www.linkedin.com/in/mandar-joshi-02001b30a/">LinkedIn</a> and 
-        <a target="blank" href="https://www.github.com/mndar">GitHub</a> as well. </p>
-        <button type="button" class="btn btn-primary" onclick="showContent('contact')">Contact Me</button>
-    </div>
-    </div>
-    <div class="visually-hidden" id="contact">
-        <hr>
-        <h2>Contact</h2>
-        <hr>
-        <h5>Email: emailmandar@gmail.com</h5>
-        <h5>Cell: +91 9967820381</h5>
-
-        <div id="mc_embed_shell">
-          <link href="https://cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
-      <style type="text/css">
-            #mc_embed_signup{background:#212529; false;clear:left; font:14px Helvetica,Arial,sans-serif; width: 600px;}
-            /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
-               We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-    </style>
-    <div id="mc_embed_signup">
-        <form action="https://github.us10.list-manage.com/subscribe/post?u=868bf0cc74ad7374e724ddf44&amp;id=476d6a4a7b&amp;f_id=00618de1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-            <div id="mc_embed_signup_scroll">
-                <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
-                <div class="mc-field-group"><label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div><div class="mc-field-group"><label for="mce-FNAME">First Name </label><input type="text" name="FNAME" class=" text" id="mce-FNAME" value=""></div><div class="mc-field-group"><label for="mce-LNAME">Last Name </label><input type="text" name="LNAME" class=" text" id="mce-LNAME" value=""></div><div class="mc-field-group"><label for="mce-COMPANY">Company </label><input type="text" name="COMPANY" class=" text" id="mce-COMPANY" value=""></div><div class="mc-field-group"><label for="mce-MMERGE4">Message </label><input type="text" name="MMERGE4" class=" text" id="mce-MMERGE4" value=""></div>
-            <div id="mce-responses" class="clear foot">
-                <div class="response" id="mce-error-response" style="display: none;"></div>
-                <div class="response" id="mce-success-response" style="display: none;"></div>
-            </div>
-        <div style="position: absolute; left: -5000px;" aria-hidden="true">
-            /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
-            <input type="text" name="b_868bf0cc74ad7374e724ddf44_476d6a4a7b" tabindex="-1" value="">
-        </div>
-            <div class="optionalParent">
-                <div class="clear foot">
-                    <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe">
-                    <p style="margin: 0px auto;"><a href="http://eepurl.com/iZPbwY" title="Mailchimp - email marketing made easy and fun"><span style="display: inline-block; background-color: black; border-radius: 4px;"><img class="refferal_badge" src="https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/intuit-mc-rewards-text-light.svg" alt="Intuit Mailchimp" style="width: 220px; height: 40px; display: flex; padding: 2px 0px; justify-content: center; align-items: center;"></span></a></p>
-                </div>
-            </div>
-        </div>
-    </form>
-    </div>
-    <script type="text/javascript" src="https://s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[6]='COMPANY';ftypes[6]='text';fnames[4]='MMERGE4';ftypes[4]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script></div>
+    <title>Mandar Joshi - Linux Developer - About</title>
     
-  </div>
-    </div>
-    <div class="visually-hidden" id="loyalty_programme_bahrain">
-      <hr/>
-      <h4>Loyalty Programme For a Premier Retail Chain In Bahrain</h4>
-      <p><i>Mifare Smart Cards and Payments Terminals & Pinpads Interfaced Over RS232</i></p>
-      <hr>
-      <p><b><u>The Requirement:</u></b></p>
-      <p>The retail chain wanted to move away from their previous vendor to a new Loyalty Programme having Payment Terminals and Pin Pads that would
-      make the Sales experience smoother. The retail chain had Point-Of-Sale (POS) Terminals running DOS that provided an RS232 Interface for the billing data.
-      The job was to capture the data over RS232, write to the Mifare cards, provide the POS terminal data from the Mifare card and to have an option to migrate
-      the data from the old system to the new system by using free area on the Mifare cards.
-      </p>
-      <p><b><u>The Solution:</u></b></p>
-      <p>Living and Developing the solution in Bahrain was an unforgettable experience. After engaging with the client and getting a detailed description of the requirements,
-        understanding the pain points and their reasons for wanting the new solution, I began the coding binges in the hotel. The payment terminal API was well documented with 
-        coding done in C. A GCC 3.4 Cross compiler provided by the payment terminal vendor and the code signing utilities provided as seamless development experience.
-        The solution was developed in a mere 3 weeks and deployed just before Ramadan, just in time.
-      </p>
-      <p><b><u>Technologies:</u></b></p>
-      <p>Castles Vega 9300, Mifare, ISO 14443, Payment Terminals, RS232, DOS</p>
-    </div>
-    <div class="visually-hidden" id="freeswitch_voip_voice_trading">
-      <hr/>
-      <h4>FreeSwtich - VoIP Phone For Stock Traders</h4>
-      <p><i>FreeSwitch Event System and the Twisted Python Library</i></p>
-      <hr>
-      <p><b><u>The Requirement:</u></b></p>
-      <p>The company I was working for needed a new server software to manage the calls for their VoIP phone terminals. The VoIP phone terminals running Arch Linux were
-        managing the calls with the help of a Proprietary Server. Moving to FreeSwitch, a new management software had to be develeoped.
-      </p>
-      <p><b><u>The Solution:</u></b></p>
-      <p>Using the Twisted Python Library, I worked on controlling FreeSwitch via the event system interface and managing the calls, initiating them, terminating them and provided
-        an output interface to view the status of the calls
-      </p>
-      <p><b><u>Technologies:</u></b> </p>
-      <p>FreeSwitch, Arch Linux, Embedded Linux, VoIP Phone</p>
-    </div>
-    <div class="visually-hidden" id="mars_2020_contributor">
-      <hr/>
-      <h4>Linux Kernel Code In the NASA Ingenuity Helicopter</h4>
-      <p><i>My contribution the Linux Kernel earned me the Mars 2020 Contributor badge on GitHub</i></p>
-      <hr>
-      <p><b><u>The Requirement:</u></b></p>
-      <p>Being a huge Music fan, I was into external DACs (Digital To Analog Converters or External Sound Cards)  in the mid-late 2000s. 
-        I bought the Creative USB X-FI USB S51 and realzied that the Volume Knob on the device and the LED had no support under Linux. 
-        Thus began the journey of learning how to write Linux Kernel Modules and patching the Linux Kernel.</p>
-        <p>This contribution to the Linux Kernel earned me the <a target="blank" href="https://github.com/mndar?achievement=mars-2020-contributor&tab=achievements">Mars 2020 Contributor Badge</a> on GitHub</p>
-      <p><b><u>The Solution:</u></b></p>
-      <p>I used SniffUSB under WindowsXP to capture the USB Traffic as I used the Volume Knob and kept a watch on the LED on the Creative USB X-Fi S51. 
-      After a few hours of capturing data and sifting through it, I traced down the Control Transfers in the URBs (USB Request Blocks) that had the repeating
-      pattern with the Volume Knob being turned clockwise, anticlockwise and pressed (The volume knob also served as a button to mute audio). 
-      </p>
-      <p>
-        Going through the Linux Kernel source code, I found the struct that held values for similar devices. Filling the values I had captured and many compiles and restarts a 
-        few times got me a functional usbaudio kernel module that supported the volume knob and passed on the events to LIRC (Linux Infrared Remote Control). I made the patch and 
-        sent the <a target="blank" href="https://mailman.alsa-project.org/pipermail/alsa-devel/2010-October/033100.html">Patch on the Alsa-Devel mailing list</a> where it was reviewd and accepted into kernel 2.6.37.
-      </p>
-      <p><b><u>Technologies:</u></b> </p>
-      <p>Linux Kernel, SniffUSB, Reverse Engineering, USB, Linux Kenrel Modules, ALSA, LIRC</p>
-    </div>
-    <div class="visually-hidden" id="surveillance_system">
-      <hr/>
-      <h4>Surveillance - The Next Step In Video Monitoring</h4>
-      <p><i>Emnbedded Linux Systems used as Surveillance Devices</i></p>
-      <hr>
-      <p><b><u>The Requirement:</u></b></p>
-      <p>With increasing focus on our security, we need surveillance solutions to get better, faster. Solutions need to get smarter to reduce the human workload in monitoring systems. The project I developed is one such solution. It's called Surveillance. It’s not just an application which allows capture and storage of video stream 24x7. 
-        It’s an extendable framework that allows you to do custom processing on video streams using simple shared libraries/ GStreamer plugins and report results in plain text, allowing you to easily parse it and take decisions. This system comprises of Cameras/Camera Sensors, Processing Hardware (camera endpoints) and a central server. Processing happens on the camera endpoints and is collected by the central server.</p>
-      <p><b><u>The Solution:</u></b></p>
-      <p>A custom GstMeta library provides an API for GStBaseTransform plugins to add custom metadata related to a video stream. The GstMeta is retreived and posted on the Gstreamer Bus which is retrieved by the monitoring application.
-        I developed this as a framework. The monitoring application allows custom video analytics plugins to simply dropped in to a directory and configured for use with the monitoing application.
-        I presented a talk at the <a target="blank" href="https://gstconf.ubicast.tv/permalink/v125619e7ab055tsn48u/iframe/">GStreamer Conference 2016 in Berlin</a> titled <b>Intelligent Surveillance</b> describing the project.
-      </p>
-      <p><b><u>Technologies:</u></b> </p>
-      <p>GStreamer, Gtk+, Qt, Gentoo, Ubuntu, OpenCV, Dlib</p>
-    </div>
-    <div class="visually-hidden" id="nvidia_deepstream_edge_analytics">
-      <hr/>
-      <h4>Edge Analytics architecture on the NVidia Jetson Platform</h4>
-      <p><i>An Extensible architecture using Nvidia Deepstream and GStreamer</i></p>
-      <hr>
-      <p><b><u>The Requirement:</u></b></p>
-      <p>A Computer Vision company was running their algorithms as independent applicaitons. 
-        The job was to develop an architecture using the Nvidia Deepstream framework that will allow plugging in of any algorithm for any appplication into the architecture.</p>
-      <p><b><u>The Solution:</u></b></p>
-      <p>Living in Chennai was a memorable experience. GStreamer expertise combined with the functionality provided by NVidia Deepstream provided the right tools for 
-        developing an extensible architecture for the Edge Analytics platform. 
-      </p><p>After integrating the <a target="blank" href="https://www.stereolabs.com/en-in/products/zed-2">Zed 2 from Stereolabs</a> with the <a target="blank" href="https://www.nvidia.com/en-in/autonomous-machines/embedded-systems/"/>Nvidia Jetson platform</a>, I designed a architecture capable 
-        of supporting growing number of applications using the <a target="blank" href="https://developer.nvidia.com/deepstream-sdk">NVida Deepstream framework</a> for the company. Dynamically Loadable libraries were used to provide a "drop new functioanlity into directory" feature. The end result was a 
-        happy client with architecture locked under NDA. That's why you don't see many details here. Sorry!
-      </p>
-      <p><b><u>Technologies:</u></b> </p>
-      <p>NVidia Deepstream, NVidia Jetson, GStreamer, C, C++</p>
-    </div>
-    <div class="visually-hidden" id="pattern_matching_addresses">
-      <hr/>
-      <h4>Pattern Matching Addresses - Petroleum Industry</h4>
-      <p><i>Finding duplicate addresses in a very large database</i></p>
-      <hr>
-      <p><b><u>The Requirement:</u></b></p>
-      <p>Government Subsidized gas connections were being missued by fraudsters by manipulating addresses to receive a double subsidy. The job was to design
-        and implement an algorithm to find such duplicate addresses, frequently manipulated tactfully to avoid theft detection.
-      </p>
-      <p><b><u>The Solution:</u></b></p>
-      <p>Again not many details during the NDA but here's a broad view of what I did. Regex was used extensively to find known manipulated words. Using a geographical database,
-        processing size was considerable reduced by running computationally heavy processing only on addresses grouped by approximate location. The result was a stunning expose on how
-        miscreants were manipulating names and addresses to benefit from Government subsidies illegally.
-      </p>
-      <p><b><u>Technologies:</u></b> </p>
-      <p>Regex, MySQl, MsSQL, Cursors, SQL, C, C++</p>
-    </div>
-    <div class="visually-hidden" id="rootfs_build_factory_centos_gsoc_2015">
-      <hr/>
-      <h4>RootFS Build Factory for Centos - GSoC 2015</h4>
-      <p><i>A successful Google Summer of Code 2015</i></p>
-      <hr>
-      <p><b><u>The Requirement:</u></b></p>
-      <p>CentOS ARMv7 was being built and a toolkit to generate rootfs images for various vendor boards was needed. Every vendor could release their their custom kernel and a mechanism was needed 
-        where CentOS could be run there boards with custom kernels and packages.
-      </p>
-      <p><b><u>The Solution:</u></b></p>
-      <p>After discussions with my mentor, I designed a Python based solution where a XML generated using a NCurses GUI (PyDialog) would be used to generated a custom RootFS for the board.
-      </p><p>
-        RootFS images were generated and tested on Cubietruck, Odroid C1, Raspberry Pi 2, Banana Pi, Cubieboard 2, Cubiboard</p>
-      </p><p>The project is on GitHub <a target="blank" href="https://www.github.com/mndar/rbf">here</a>
-      </p>
-      <p><b><u>Technologies:</u></b> </p>
-      <p>CentOS, Python, Yum, Dnf, Bash, RPM, RootFS, Embedded Linux, Custom Kernels</p>
-    </div>
-    <div class="visually-hidden" id="network_engineer">
-      <hr/>
-      <h4>Managing Tech @ A Stock Trading Company</h4>
-      <p><i>My first job as a Network Engineer</i></p>
-      <hr>
-      <p>Stock trading companies are high stake operations and near flawless uptime is a must requirement. This was my first job and I thoroughly enjoyed it</p>
-      <p>I managed the network of a hundred computers for over a year ensuring smooth functioning of the facility. 
-        </p><p>My job involved interacting with various vendors to ensure
-        the client was able to effectively use software and hardware systems supplied by the vendors. I managed Eicon card based sytems, an Internet Trading System, Cisco Routers and Fortinet firewalls
-      </p>
-      <p><b><u>Technologies:</u></b> </p>
-      <p>Networking, Hardware, Cisco Routers, Fortinet Firewalls</p>
-    </div>
-    <div class="visually-hidden" id="openvpn_embedded_linux">
-      <hr/>
-      <h4>OpenVPN for Voice Trading @ A Stock Trading Company</h4>
-      <p><i>Embedded Linux Voip Phones networked over a Virtual Private Network (VPN)</i></p>
-      <hr>
-      <p><b><u>The Requirement:</u></b></p>
-      <p>At the peak of COVID as the city went into lockdown, a stock trader was left with traders unable to trade efficiently as their voice trading terminals, voip phones running embeeded linux 
-        couldn't be used from the trader's homes. I was hired to design a Virutal Private Network (VPN) solution to have them on the company network.
-      </p>
-      <p><b><u>The Solution:</u></b></p>
-      <p>I designed the VPN solution to have a OpenVPN Server on the client's network exposed via their public IP. The Embeedded Linux terminals running Ubuntu were configured
-       to have a OpenVPN client start at boot and login to the company network making them local rather than remote as far as the voip phone application running on them was concered. </p>
 
-       <p>The VoIP application was designed to have the VoIP phones on a single network. After discussing with the architecture with the client, I desinged and implemented a OpenVPN server and 
-        confiured OpenVPN clients on the the VoIP phones to 'hide' the fact that the terminals were actually remote.</p>
-       </p>
-      The result was a stock trader having full trading fucntionality during a Corona virus lockdown</p>
-      <p><b><u>Technologies:</u></b> </p>
-      <p>OpenVPN Server, OpenVPN Client, OpenVPN, Ubunutu, Embedded Linux, Networking, NAT Traversal</p>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+    <link href="blinkingcursor.css" rel="stylesheet">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+    </style>
+
+  </head>
+  <body class="d-flex h-100 text-center text-bg-dark">
+    
+    
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="mb-auto" style="align-content: center;">
+    <div>
+      <nav class="nav nav-masthead justify-content-center">
+        <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#">Home</a>
+        <a class="nav-link fw-bold py-1 px-0" href="articles.html">Articles</a>
+        <a class="nav-link fw-bold py-1 px-0" href="projects.html">Projects</a>
+      </nav>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="index.js"></script>
-</body>
+  </header>
+
+  <main class="px-3">
+    <img src="./linux_developer_mandar.jpeg" class="rounded-circle col-sm-4" />
+    <h1>Hi, I'm Mandar...<span class="blinking-cursor">|</span></h1>
+    <p class="lead">I am a Linux and GStreamer Developer<br/>Click on the buttons below to Contact me or Explore my work</p>
+    <p class="lead">
+      <div class="dropdown">
+      <button class="btn btn-lg btn-light fw-bold align-items-center border-black bg-primary">Contact</button>
+      
+        <button class="btn btn-lg btn-secondary dropdown-toggle text-black bg-white border-black" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Explore
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" target="blank" href="articles.html">Articles</a></li>
+          <li><a class="dropdown-item" target="blank" href="projects.html">Projects</a></li>
+          <li><a class="dropdown-item" target="blank" href="resume/Mandar Joshi - Linux Developer.pdf">Resume</a></li>
+        </ul>
+      </div>
+    </p>
+  </main>
+
+  <footer class="mt-auto text-white-50">
+   
+  </footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    </body>
 </html>
